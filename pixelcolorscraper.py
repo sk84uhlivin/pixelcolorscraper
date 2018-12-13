@@ -4,6 +4,8 @@ from PIL import Image
 
 imagenm = input("Type the name of your image: ")
 
+file = input("Do you want to output the results to a .txt instead? ")
+
 print(imagenm)
 
 im = Image.open(imagenm)
@@ -15,12 +17,18 @@ w,h = im.size
 x = 0
 y = 0
 
-print(x+1,y+1, pix[x,y])
-
+print(x+1,y+1, pix[x,y], file = open("list.txt", "a"))
 
 while (x<w) and (y<h):
-	y += 1
-	print(x+1,y+1, pix[x,y])
-	if y==h-1:
-		x += 1
-		y = 0
+	if file == 'y':
+		y += 1
+		print(x+1,y+1, pix[x,y], file = open("list.txt", "a"))
+		if y==h-1:
+			x += 1
+			y = 0
+	else:
+		y += 1
+		print(x+1,y+1, pix[x,y])
+		if y==h-1:
+			x += 1
+			y = 0
