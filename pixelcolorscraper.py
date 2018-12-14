@@ -6,8 +6,6 @@ imagenm = input("Type the name of your image: ")
 
 filecheck = input("Do you want to output the results to a file instead? (y/n) ")
 
-filename = input("What is the file name? ")
-
 im = Image.open(imagenm)
 
 pix = im.load()
@@ -17,14 +15,16 @@ w,h = im.size
 x = 0
 y = -1
 
-while (x<w) and (y<h):
-	if filecheck == 'y':	
+if filecheck == 'y':
+	filename = input("What is the file name? ")
+	while (x<w) and (y<h):		
 		y += 1
 		print(x,y, pix[x,y], file = open(filename, "a"))
 		if y==h-1:
 			x += 1
 			y = -1
-	else:
+else:
+	while (x<w) and (y<h):
 		y += 1
 		print(x,y, pix[x,y])
 		if y==h-1:
