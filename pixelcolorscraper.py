@@ -4,7 +4,9 @@ from PIL import Image
 
 imagenm = input("Type the name of your image: ")
 
-filecheck = input("Do you want to output the results to a .txt instead? (y/n) ")
+filecheck = input("Do you want to output the results to a file instead? (y/n) ")
+
+filename = input("What is the file name? ")
 
 im = Image.open(imagenm)
 
@@ -16,9 +18,9 @@ x = 0
 y = -1
 
 while (x<w) and (y<h):
-	if filecheck == 'y':
+	if filecheck == 'y':	
 		y += 1
-		print(x,y, pix[x,y], file = open("list.txt", "a"))
+		print(x,y, pix[x,y], file = open(filename, "a"))
 		if y==h-1:
 			x += 1
 			y = -1
